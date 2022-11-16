@@ -8,6 +8,14 @@ export default {
       store,
     }
   },
+  methods: {
+    searchMovies() {
+      console.log('Hai cliccato')
+      const searchInput = this.store.searchInput;
+      console.log(searchInput);
+    }
+  },
+  /* Chiamata Axios */
   mounted() {
     var config = {
       method: 'get',
@@ -28,8 +36,8 @@ export default {
 </script>
 
 <template>
-  <input type="search" placeholder="Search a movie">
-  <button>Search</button>
+  <input v-model="store.searchInput" type="search" placeholder="Search a movie">
+  <button @click="searchMovies">Search</button>
   <ul>
     <li></li>
   </ul>
@@ -40,9 +48,9 @@ export default {
 </style>
 
 <!-- TODO -->
-<!-- Chiamata Axios -->
+<!-- Chiamata Axios OK -->
 <!-- Funzione click su button -->
 <!-- V-Model sull'input -->
-<!-- Crea un ul per stampare i film -->
+<!-- Crea un ul per stampare i film OK -->
 <!-- Ciclo v-for per il singolo film -->
 <!-- Collegare l'api con la ricerca dei film alla variabile searchInput del file store -->
