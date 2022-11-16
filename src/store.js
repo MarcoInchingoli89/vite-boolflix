@@ -7,5 +7,6 @@ export const store = reactive({
     api_url: '',
     movies: null,
     api_key: '',
-    query: ''
+    query: '',
+    searchInput: ''
 })
