@@ -17,6 +17,7 @@ export default {
       const config = {
         method: 'get',
         url: `${this.store.api_url}`,
+        store: `${this.store}`,
         params: {
           api_key: `${this.store.api_key}`,
           query: `${this.store.searchInput}`,
@@ -25,25 +26,29 @@ export default {
 
       axios(config)
         .then(function (response) {
-          console.log(response)
-          console.log(response.data);
+          console.log(response);
+          console.log(response.data.results);
+          console.log(store);
+          store.movies = response.data.results;
+          console.log(store.movies);
         })
 
         .catch(function (error) {
           console.log(error);
         })
-      /* const url = `${this.store.api_url}?api_key=${this.store.api_key}&language=en-US&query=${this.store.searchInput}&page=1&include_adult=false`
-      console.log(url) */
     }
   },
 }
 </script>
 
 <template>
-  <input v-model="store.searchInput" type="search" placeholder="Search a movie">
+  <input @keyup.enter="searchMovies" v-model="store.searchInput" type="search" placeholder="Search a movie">
   <button @click="searchMovies">Search</button>
-  <ul>
-    <li></li>
+  <ul v-for="movie in store.movies">
+    <li>{{ movie.title }}</li>
+    <li>{{ movie.original_title }}</li>
+    <li>{{ movie.original_language }}</li>
+    <li>{{ movie.vote_average }}</li>
   </ul>
 </template>
 
@@ -57,4 +62,4 @@ export default {
 <!-- V-Model sull'input OK-->
 <!-- Crea un ul per stampare i film OK -->
 <!-- Ciclo v-for per il singolo film -->
-<!-- Collegare l'api con la ricerca dei film alla variabile searchInput del file store -->
+<!-- Collegare l'api con la ricerca dei film alla variabile searchInput del file store OK -->
