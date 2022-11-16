@@ -7,12 +7,28 @@ export default {
     return {
       store,
     }
+  },
+  mounted() {
+    var config = {
+      method: 'get',
+      url: 'https://api.themoviedb.org/3/search/movie?api_key=7f8d78fcf72d33f11a9755a50a65bd33&language=en-US&query=Matrix&page=1&include_adult=false'
+    };
+
+    axios(config)
+      .then(function (response) {
+
+        console.log(response.data);
+      })
+
+      .catch(function (error) {
+        console.log(error);
+      })
   }
 }
 </script>
 
 <template>
-  <input type="text" placeholder="Search a movie">
+  <input type="search" placeholder="Search a movie">
   <button>Search</button>
   <ul>
     <li></li>
