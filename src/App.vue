@@ -13,33 +13,29 @@ export default {
       console.log('Hai cliccato')
       const searchInput = this.store.searchInput;
       console.log(searchInput);
+
+      const config = {
+        method: 'get',
+        url: `${this.store.api_url}`,
+        params: {
+          api_key: `${this.store.api_key}`,
+          query: `${this.store.searchInput}`,
+        }
+      };
+
+      axios(config)
+        .then(function (response) {
+          console.log(response)
+          console.log(response.data);
+        })
+
+        .catch(function (error) {
+          console.log(error);
+        })
       /* const url = `${this.store.api_url}?api_key=${this.store.api_key}&language=en-US&query=${this.store.searchInput}&page=1&include_adult=false`
       console.log(url) */
     }
   },
-  /* Chiamata Axios */
-  mounted() {
-    var config = {
-      method: 'get',
-      url: `${this.store.api_url}`,
-      params: {
-        api_key: `${this.store.api_key}`,
-        query: 'Matrix',
-      }
-    };
-
-
-
-    axios(config)
-      .then(function (response) {
-        console.log(response)
-        console.log(response.data);
-      })
-
-      .catch(function (error) {
-        console.log(error);
-      })
-  }
 }
 </script>
 
