@@ -7,7 +7,9 @@ export default {
     return {
       store,
       flagIta: "it",
-      flagEng: "en"
+      flagEng: "en",
+      flagJap: "ja",
+      flagFra: "fr"
     }
   },
   methods: {
@@ -57,6 +59,12 @@ export default {
     </li>
     <li v-else-if="flagEng === movie.original_language">
       <img width="50" :src="store.api_flag_us" alt="">
+    </li>
+    <li v-else-if="flagJap === movie.original_language">
+      <img width="50" :src="store.api_flag_jp" alt="">
+    </li>
+    <li v-else-if="flagFra === movie.original_language">
+      <img width="50" :src="store.api_flag_fr" alt="">
     </li>
     <li v-else>
       {{ movie.original_language }}
