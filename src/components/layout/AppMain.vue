@@ -42,7 +42,7 @@ export default {
             <li v-else>
                 {{ movie.original_language }}
             </li>
-            <li>{{ movie.vote_average }}</li>
+            <li>{{ Math.ceil(movie.vote_average) }}</li>
         </ul>
 
         <!-- Stampo le caratteristiche delle serie tv in pagina -->

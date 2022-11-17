@@ -98,4 +98,5 @@ export default {
 <!-- Crea i componenti del main e inserisci le props -->
 <!-- Crea anche un componente per la flags -->
 <!-- Sistema l'input del mouse OK -->
-<!-- Guarda la milestone 3 -->
+<!-- Metti immagine film e serie OK -->
+<!-- Trasforma voto da decimale a intero da 1 a 5 -->
