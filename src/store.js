@@ -6,6 +6,7 @@ import {
 export const store = reactive({
     api_url_movie: 'https://api.themoviedb.org/3/search/movie',
     api_url_tv: 'https://api.themoviedb.org/3/search/tv',
+    url_poster: 'https://image.tmdb.org/t/p/w342',
     api_flag_it: 'https://countryflagsapi.com/svg/it',
     api_flag_us: 'https://countryflagsapi.com/svg/us',
     api_flag_jp: 'https://countryflagsapi.com/svg/jp',

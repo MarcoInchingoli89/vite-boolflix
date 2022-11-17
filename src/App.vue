@@ -58,8 +58,8 @@ export default {
         .then(function (response) {
           console.log(response);
           console.log(response.data);
-          store.TvSeries = response.data.results;
-          consolelog(store.TvSeries);
+          store.tvseries = response.data.results;
+          consolelog(store.tvseries);
         })
 
         .catch(function (error) {
@@ -90,5 +90,9 @@ export default {
 <!-- Ciclo v-for per il singolo film OK -->
 <!-- Collegare l'api con la ricerca dei film alla variabile searchInput del file store OK -->
 <!-- Inserisci le bandierine OK -->
-<!-- Fai un po' di refactoring e crea i primi componenti -->
-<!-- Implemente la ricerca delle serie tv -->
+<!-- Fai un po' di refactoring e crea i primi componenti OK -->
+<!-- Implemente la ricerca delle serie tv OK -->
+<!-- Crea i componenti del main e inserisci le props -->
+<!-- Crea anche un componente per la flags -->
+<!-- Sistema l'input del mouse -->
+<!-- Guarda la milestone 3 -->

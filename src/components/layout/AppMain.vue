@@ -23,6 +23,9 @@ export default {
         <ul v-for="movie in store.movies">
             <li>{{ movie.title }}</li>
             <li>{{ movie.original_title }}</li>
+            <li>
+                <img :src="`${store.url_poster}${movie.poster_path}`" alt="">
+            </li>
             <!-- Inserisco le immagini delle bandiere -->
             <li v-if="flagIta === movie.original_language">
                 <img width="50" :src="store.api_flag_it" alt="">
@@ -42,6 +45,7 @@ export default {
             <li>{{ movie.vote_average }}</li>
         </ul>
 
+        <!-- Stampo le caratteristiche delle serie tv in pagina -->
         <ul v-for="tv in store.tvseries">
             <li>{{ tv.name }}</li>
             <li>{{ tv.original_name }}</li>
