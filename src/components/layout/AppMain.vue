@@ -42,7 +42,9 @@ export default {
             <li v-else>
                 {{ movie.original_language }}
             </li>
-            <li>{{ Math.round(movie.vote_average / 2) }}</li>
+            <li v-for="n in Math.round(movie.vote_average / 2)">
+                <font-awesome-icon icon="fa-solid fa-star" />
+            </li>
         </ul>
 
         <!-- Stampo le caratteristiche delle serie tv in pagina -->
@@ -68,7 +70,9 @@ export default {
             <li v-else>
                 {{ tv.original_language }}
             </li>
-            <li>{{ tv.vote_average }}</li>
+            <li v-for="n in Math.round(tv.vote_average / 2)">
+                <font-awesome-icon icon="fa-solid fa-star" />
+            </li>
         </ul>
     </main>
 

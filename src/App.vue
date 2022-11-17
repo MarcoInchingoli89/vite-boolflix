@@ -2,7 +2,7 @@
 import axios from 'axios'
 import { store } from '../src/store'
 import SearchBox from './components/header_components/SearchBox.vue'
-import AppMain from './components/Layout/AppMain.vue'
+import AppMain from './components/layout/AppMain.vue'
 export default {
   name: 'App',
   components: {
