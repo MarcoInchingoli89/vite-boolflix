@@ -1,15 +1,17 @@
 <script>
 import axios from 'axios'
 import { store } from '../src/store'
+import AppHeader from './components/Layout/AppHeader.vue'
+import AppMain from './components/Layout/AppMain.vue'
 export default {
   name: 'App',
+  components: {
+    AppHeader,
+    AppMain,
+  },
   data() {
     return {
       store,
-      flagIta: "it",
-      flagEng: "en",
-      flagJap: "ja",
-      flagFra: "fr"
     }
   },
   methods: {
@@ -47,30 +49,11 @@ export default {
 </script>
 
 <template>
-  <input @keyup.enter="searchMovies" v-model="store.searchInput" type="search" placeholder="Search a movie">
-  <button @click="searchMovies">Search</button>
-  <!-- Stampo le caratteristiche dei film in pagina -->
-  <ul v-for="movie in store.movies">
-    <li>{{ movie.title }}</li>
-    <li>{{ movie.original_title }}</li>
-    <!-- Inserisco le immagini delle bandiere -->
-    <li v-if="flagIta === movie.original_language">
-      <img width="50" :src="store.api_flag_it" alt="">
-    </li>
-    <li v-else-if="flagEng === movie.original_language">
-      <img width="50" :src="store.api_flag_us" alt="">
-    </li>
-    <li v-else-if="flagJap === movie.original_language">
-      <img width="50" :src="store.api_flag_jp" alt="">
-    </li>
-    <li v-else-if="flagFra === movie.original_language">
-      <img width="50" :src="store.api_flag_fr" alt="">
-    </li>
-    <li v-else>
-      {{ movie.original_language }}
-    </li>
-    <li>{{ movie.vote_average }}</li>
-  </ul>
+
+  <AppHeader @search="searchMovies" />
+  <AppMain />
+
+
 </template>
 
 <style scoped>
@@ -82,5 +65,8 @@ export default {
 <!-- Funzione click su button OK -->
 <!-- V-Model sull'input OK-->
 <!-- Crea un ul per stampare i film OK -->
-<!-- Ciclo v-for per il singolo film -->
+<!-- Ciclo v-for per il singolo film OK -->
 <!-- Collegare l'api con la ricerca dei film alla variabile searchInput del file store OK -->
+<!-- Inserisci le bandierine OK -->
+<!-- Fai un po' di refactoring e crea i primi componenti -->
+<!-- Implemente la ricerca delle serie tv -->
