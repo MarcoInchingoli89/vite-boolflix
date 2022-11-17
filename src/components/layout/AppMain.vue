@@ -41,6 +41,28 @@ export default {
             </li>
             <li>{{ movie.vote_average }}</li>
         </ul>
+
+        <ul v-for="tv in store.tvseries">
+            <li>{{ tv.name }}</li>
+            <li>{{ tv.original_name }}</li>
+            <!-- Inserisco le immagini delle bandiere -->
+            <li v-if="flagIta === tv.original_language">
+                <img width="50" :src="store.api_flag_it" alt="">
+            </li>
+            <li v-else-if="flagEng === tv.original_language">
+                <img width="50" :src="store.api_flag_us" alt="">
+            </li>
+            <li v-else-if="flagJap === tv.original_language">
+                <img width="50" :src="store.api_flag_jp" alt="">
+            </li>
+            <li v-else-if="flagFra === tv.original_language">
+                <img width="50" :src="store.api_flag_fr" alt="">
+            </li>
+            <li v-else>
+                {{ tv.original_language }}
+            </li>
+            <li>{{ tv.vote_average }}</li>
+        </ul>
     </main>
 
 </template>

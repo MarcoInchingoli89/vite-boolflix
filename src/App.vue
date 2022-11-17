@@ -21,9 +21,9 @@ export default {
       const searchInput = this.store.searchInput;
       console.log(searchInput);
       /* Configurazione variabili axios */
-      const config = {
+      const configMovie = {
         method: 'get',
-        url: `${this.store.api_url}`,
+        url: `${this.store.api_url_movie}`,
         store: `${this.store}`,
         params: {
           api_key: `${this.store.api_key}`,
@@ -31,13 +31,35 @@ export default {
         }
       };
       /* Chiamata Axios */
-      axios(config)
+      axios(configMovie)
         .then(function (response) {
           console.log(response);
           console.log(response.data.results);
           console.log(store);
           store.movies = response.data.results;
           console.log(store.movies);
+        })
+
+        .catch(function (error) {
+          console.log(error);
+        })
+
+      const configTv = {
+        method: 'get',
+        url: `${this.store.api_url_tv}`,
+        store: `${this.store}`,
+        params: {
+          api_key: `${this.store.api_key}`,
+          query: `${this.store.searchInput}`,
+        }
+      };
+
+      axios(configTv)
+        .then(function (response) {
+          console.log(response);
+          console.log(response.data);
+          store.TvSeries = response.data.results;
+          consolelog(store.TvSeries);
         })
 
         .catch(function (error) {
