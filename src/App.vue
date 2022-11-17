@@ -1,13 +1,13 @@
 <script>
 import axios from 'axios'
 import { store } from '../src/store'
-import AppHeader from './components/Layout/AppHeader.vue'
+import SearchBox from './components/header_components/SearchBox.vue'
 import AppMain from './components/Layout/AppMain.vue'
 export default {
   name: 'App',
   components: {
-    AppHeader,
     AppMain,
+    SearchBox,
   },
   data() {
     return {
@@ -72,7 +72,10 @@ export default {
 
 <template>
 
-  <AppHeader @search="searchMovies" />
+  <header id="site_header">
+    <!-- Input di ricerca -->
+    <SearchBox @search="searchMovies" />
+  </header>
   <AppMain />
 
 
