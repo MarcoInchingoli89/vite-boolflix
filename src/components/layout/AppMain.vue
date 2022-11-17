@@ -49,6 +49,9 @@ export default {
         <ul v-for="tv in store.tvseries">
             <li>{{ tv.name }}</li>
             <li>{{ tv.original_name }}</li>
+            <li>
+                <img :src="`${store.url_poster}${tv.poster_path}`" alt="">
+            </li>
             <!-- Inserisco le immagini delle bandiere -->
             <li v-if="flagIta === tv.original_language">
                 <img width="50" :src="store.api_flag_it" alt="">

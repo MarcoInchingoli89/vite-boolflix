@@ -97,5 +97,5 @@ export default {
 <!-- Implemente la ricerca delle serie tv OK -->
 <!-- Crea i componenti del main e inserisci le props -->
 <!-- Crea anche un componente per la flags -->
-<!-- Sistema l'input del mouse -->
+<!-- Sistema l'input del mouse OK -->
 <!-- Guarda la milestone 3 -->
