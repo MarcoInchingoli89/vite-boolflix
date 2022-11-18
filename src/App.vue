@@ -73,8 +73,13 @@ export default {
 <template>
 
   <header id="site_header">
-    <!-- Input di ricerca -->
-    <SearchBox @search="searchMovies" />
+    <nav class="d-flex bg-black justify-content-between align-items-center">
+      <div class="logo p-2">
+        <h1 class="text-danger fw-light">Boolflix</h1>
+      </div>
+      <!-- Input di ricerca -->
+      <SearchBox @search="searchMovies" />
+    </nav>
   </header>
   <AppMain />
 
