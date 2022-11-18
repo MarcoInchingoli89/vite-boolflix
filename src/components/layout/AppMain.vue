@@ -18,7 +18,7 @@ export default {
 
 <template>
 
-    <main id="site_main">
+    <main class="d-flex flex-wrap justify-content-center" id="site_main">
         <MovieItem v-for="movie in store.movies" :title="movie.title" :originalTitle="movie.original_title"
             :image="movie.poster_path" :originalLanguage="movie.original_language" :rating="movie.vote_average" />
 

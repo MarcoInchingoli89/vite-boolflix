@@ -26,14 +26,14 @@ export default {
 <template>
 
     <!-- Stampo le caratteristiche dei film in pagina -->
-    <ul>
-        <li>{{ title }}</li>
-        <li>{{ originalTitle }}</li>
-        <li>
+    <ul class="d-flex p-0">
+        <!-- <li>{{ title }}</li>
+        <li>{{ originalTitle }}</li> -->
+        <li class="p-3">
             <img :src="`${store.url_poster}${image}`" alt="">
         </li>
         <!-- Inserisco le immagini delle bandiere -->
-        <li v-if="flagIta === originalLanguage">
+        <!-- <li v-if="flagIta === originalLanguage">
             <img width="50" :src="store.api_flag_it" alt="">
         </li>
         <li v-else-if="flagEng === originalLanguage">
@@ -53,12 +53,14 @@ export default {
         </li>
         <li v-for="n in 5 - Math.round(rating / 2)">
             <font-awesome-icon icon="fa-regular fa-star" />
-        </li>
+        </li> -->
 
     </ul>
 
 </template>
 
-<style scoped>
-
+<style lang="scss" scoped>
+ul {
+    list-style: none;
+}
 </style>
