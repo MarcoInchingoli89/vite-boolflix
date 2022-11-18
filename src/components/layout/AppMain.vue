@@ -1,16 +1,16 @@
 <script>
 import { store } from '../../store'
+import MovieItem from '../main_components/MovieItem.vue'
+import TvItem from '../main_components/MovieItem.vue'
 export default {
     name: 'AppMain',
     components: {
+        MovieItem,
+        TvItem,
     },
     data() {
         return {
             store,
-            flagIta: "it",
-            flagEng: "en",
-            flagJap: "ja",
-            flagFra: "fr"
         }
     }
 }
@@ -19,68 +19,11 @@ export default {
 <template>
 
     <main id="site_main">
-        <!-- Stampo le caratteristiche dei film in pagina -->
-        <ul v-for="movie in store.movies">
-            <li>{{ movie.title }}</li>
-            <li>{{ movie.original_title }}</li>
-            <li>
-                <img :src="`${store.url_poster}${movie.poster_path}`" alt="">
-            </li>
-            <!-- Inserisco le immagini delle bandiere -->
-            <li v-if="flagIta === movie.original_language">
-                <img width="50" :src="store.api_flag_it" alt="">
-            </li>
-            <li v-else-if="flagEng === movie.original_language">
-                <img width="50" :src="store.api_flag_us" alt="">
-            </li>
-            <li v-else-if="flagJap === movie.original_language">
-                <img width="50" :src="store.api_flag_jp" alt="">
-            </li>
-            <li v-else-if="flagFra === movie.original_language">
-                <img width="50" :src="store.api_flag_fr" alt="">
-            </li>
-            <li v-else>
-                {{ movie.original_language }}
-            </li>
-            <li v-for="n in Math.round(movie.vote_average / 2)">
-                <font-awesome-icon icon="fa-solid fa-star" />
-            </li>
-            <li v-for="n in 5 - Math.round(movie.vote_average / 2)">
-                <font-awesome-icon icon="fa-regular fa-star" />
-            </li>
+        <MovieItem v-for="movie in store.movies" :title="movie.title" :originalTitle="movie.original_title"
+            :image="movie.poster_path" :originalLanguage="movie.original_language" :rating="movie.vote_average" />
 
-        </ul>
-
-        <!-- Stampo le caratteristiche delle serie tv in pagina -->
-        <ul v-for="tv in store.tvseries">
-            <li>{{ tv.name }}</li>
-            <li>{{ tv.original_name }}</li>
-            <li>
-                <img :src="`${store.url_poster}${tv.poster_path}`" alt="">
-            </li>
-            <!-- Inserisco le immagini delle bandiere -->
-            <li v-if="flagIta === tv.original_language">
-                <img width="50" :src="store.api_flag_it" alt="">
-            </li>
-            <li v-else-if="flagEng === tv.original_language">
-                <img width="50" :src="store.api_flag_us" alt="">
-            </li>
-            <li v-else-if="flagJap === tv.original_language">
-                <img width="50" :src="store.api_flag_jp" alt="">
-            </li>
-            <li v-else-if="flagFra === tv.original_language">
-                <img width="50" :src="store.api_flag_fr" alt="">
-            </li>
-            <li v-else>
-                {{ tv.original_language }}
-            </li>
-            <li v-for="n in Math.round(movie.vote_average / 2)">
-                <font-awesome-icon icon="fa-solid fa-star" />
-            </li>
-            <li v-for="n in 5 - Math.round(movie.vote_average / 2)">
-                <font-awesome-icon icon="fa-regular fa-star" />
-            </li>
-        </ul>
+        <TvItem v-for="tv in store.tvseries" :title="tv.name" :originalTitle="tv.original_name" :image="tv.poster_path"
+            :originalLanguage="tv.original_language" :rating="tv.vote_average" />
     </main>
 
 </template>

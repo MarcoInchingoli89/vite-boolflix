@@ -5,6 +5,7 @@ export default {
     props: {
         title: String,
         originalTitle: String,
+        image: String,
         originalLanguage: String,
         rating: Number
     },
@@ -25,31 +26,35 @@ export default {
 <template>
 
     <!-- Stampo le caratteristiche dei film in pagina -->
-    <ul v-for="movie in store.movies">
-        <li>{{ movie.title }}</li>
-        <li>{{ movie.original_title }}</li>
+    <ul>
+        <li>{{ title }}</li>
+        <li>{{ originalTitle }}</li>
         <li>
-            <img :src="`${store.url_poster}${movie.poster_path}`" alt="">
+            <img :src="`${store.url_poster}${image}`" alt="">
         </li>
         <!-- Inserisco le immagini delle bandiere -->
-        <li v-if="flagIta === movie.original_language">
+        <li v-if="flagIta === originalLanguage">
             <img width="50" :src="store.api_flag_it" alt="">
         </li>
-        <li v-else-if="flagEng === movie.original_language">
+        <li v-else-if="flagEng === originalLanguage">
             <img width="50" :src="store.api_flag_us" alt="">
         </li>
-        <li v-else-if="flagJap === movie.original_language">
+        <li v-else-if="flagJap === originalLanguage">
             <img width="50" :src="store.api_flag_jp" alt="">
         </li>
-        <li v-else-if="flagFra === movie.original_language">
+        <li v-else-if="flagFra === originalLanguage">
             <img width="50" :src="store.api_flag_fr" alt="">
         </li>
         <li v-else>
-            {{ movie.original_language }}
+            {{ originalLanguage }}
         </li>
-        <li v-for="n in Math.round(movie.vote_average / 2)">
+        <li v-for="n in Math.round(rating / 2)">
             <font-awesome-icon icon="fa-solid fa-star" />
         </li>
+        <li v-for="n in 5 - Math.round(rating / 2)">
+            <font-awesome-icon icon="fa-regular fa-star" />
+        </li>
+
     </ul>
 
 </template>
