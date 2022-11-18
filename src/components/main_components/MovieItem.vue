@@ -29,8 +29,16 @@ export default {
     <ul class="d-flex p-0">
         <!-- <li>{{ title }}</li>
         <li>{{ originalTitle }}</li> -->
-        <li class="p-3">
-            <img :src="`${store.url_poster}${image}`" alt="">
+        <li class="border m-2">
+
+            <div class="card_info bg-dark">
+
+                <div class="movie_image">
+                    <img :src="`${store.url_poster}${image}`" alt="">
+                </div>
+
+            </div>
+
         </li>
         <!-- Inserisco le immagini delle bandiere -->
         <!-- <li v-if="flagIta === originalLanguage">
@@ -62,5 +70,21 @@ export default {
 <style lang="scss" scoped>
 ul {
     list-style: none;
+
+    .card_info {
+        width: 343px;
+        height: 515px;
+    }
+
+    img {
+        &:hover {
+            opacity: 0;
+        }
+    }
+
+    img {
+        object-fit: cover;
+
+    }
 }
 </style>
