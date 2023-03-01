@@ -35,7 +35,21 @@ export default {
                     <h4>{{ title }}</h4>
                     <h6>{{ originalTitle }}</h6>
                     <div class="language">
-                        {{ originalLanguage }}
+                        <div v-if="flagIta === originalLanguage">
+                            <img width="50" :src="store.api_flag_it" alt="">
+                        </div>
+                        <div v-else-if="flagEng === originalLanguage">
+                            <img width="50" :src="store.api_flag_us" alt="">
+                        </div>
+                        <div v-else-if="flagJap === originalLanguage">
+                            <img width="50" :src="store.api_flag_jp" alt="">
+                        </div>
+                        <div v-else-if="flagFra === originalLanguage">
+                            <img width="50" :src="store.api_flag_fr" alt="">
+                        </div>
+                        <div v-else>
+                            {{ originalLanguage }}
+                        </div>
                     </div>
                     <div class="rating d-flex">
                         <div class="text-warning" v-for="n in Math.round(rating / 2)">
