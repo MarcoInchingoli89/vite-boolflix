@@ -71,23 +71,46 @@ export default {
 </script>
 
 <template>
-
   <header id="site_header">
-    <nav class="d-flex bg-black justify-content-between align-items-center">
-      <div class="logo p-2">
-        <h1 class="text-danger fw-light">Boolflix</h1>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-black">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">
+          Boolflix
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+          aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="#">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Movies</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">TV Shows</a>
+            </li>
+          </ul>
+          <!-- Input di ricerca -->
+          <SearchBox @search="searchMovies" />
+        </div>
       </div>
-      <!-- Input di ricerca -->
-      <SearchBox @search="searchMovies" />
     </nav>
   </header>
   <AppMain />
-
-
 </template>
 
 <style scoped>
+@import url('https://cdn.rawgit.com/sharp67/Netflix-Clone/70f07a26/src/assets/fonts/netflix-sans.css');
 
+.navbar-brand {
+  font-family: 'Netflix Sans', sans-serif;
+  color: red;
+  font-weight: bold;
+  font-size: 2rem;
+}
 </style>
 
 <!-- TODO -->

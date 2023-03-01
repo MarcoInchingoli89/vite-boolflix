@@ -24,47 +24,35 @@ export default {
 </script>
 
 <template>
-
     <!-- Stampo le caratteristiche dei film in pagina -->
     <ul class="d-flex p-0">
-        <!-- <li>{{ title }}</li>
-        <li>{{ originalTitle }}</li> -->
         <li class="border m-2">
-
             <div class="card_info bg-dark">
-
                 <div class="movie_image">
                     <img :src="`${store.url_poster}${image}`" alt="">
                 </div>
-
+                <div class="movie_info">
+                    <h4>{{ title }}</h4>
+                    <h6>{{ originalTitle }}</h6>
+                    <div class="language">
+                        <img v-if="flagIta === originalLanguage" width="50" :src="store.api_flag_it" alt="">
+                        <img v-else-if="flagEng === originalLanguage" width="50" :src="store.api_flag_us" alt="">
+                        <img v-else-if="flagJap === originalLanguage" width="50" :src="store.api_flag_jp" alt="">
+                        <img v-else-if="flagFra === originalLanguage" width="50" :src="store.api_flag_fr" alt="">
+                        <span v-else>{{ originalLanguage }}</span>
+                    </div>
+                    <div class="rating d-flex">
+                        <div class="text-warning" v-for="n in Math.round(rating / 2)">
+                            <font-awesome-icon icon="fa-solid fa-star" />
+                        </div>
+                        <div v-for="n in 5 - Math.round(rating / 2)">
+                            <font-awesome-icon icon="fa-regular fa-star" />
+                        </div>
+                    </div>
+                </div>
             </div>
-
         </li>
-        <!-- Inserisco le immagini delle bandiere -->
-        <!-- <li v-if="flagIta === originalLanguage">
-            <img width="50" :src="store.api_flag_it" alt="">
-        </li>
-        <li v-else-if="flagEng === originalLanguage">
-            <img width="50" :src="store.api_flag_us" alt="">
-        </li>
-        <li v-else-if="flagJap === originalLanguage">
-            <img width="50" :src="store.api_flag_jp" alt="">
-        </li>
-        <li v-else-if="flagFra === originalLanguage">
-            <img width="50" :src="store.api_flag_fr" alt="">
-        </li>
-        <li v-else>
-            {{ originalLanguage }}
-        </li>
-        <li v-for="n in Math.round(rating / 2)">
-            <font-awesome-icon icon="fa-solid fa-star" />
-        </li>
-        <li v-for="n in 5 - Math.round(rating / 2)">
-            <font-awesome-icon icon="fa-regular fa-star" />
-        </li> -->
-
     </ul>
-
 </template>
 
 <style lang="scss" scoped>
@@ -72,19 +60,48 @@ ul {
     list-style: none;
 
     .card_info {
+        position: relative;
         width: 343px;
         height: 515px;
-    }
 
-    img {
-        &:hover {
-            opacity: 0;
+        img {
+            object-fit: cover;
         }
-    }
 
-    img {
-        object-fit: cover;
+        .movie_info {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: #fff;
+            opacity: 0;
+            transition: opacity 0.3s ease;
 
+            h2,
+            h3 {
+                margin: 0;
+                font-size: 20px;
+                font-weight: normal;
+                text-align: center;
+            }
+
+            p {
+                margin: 10px 0;
+                font-size: 16px;
+                font-weight: normal;
+                text-align: center;
+            }
+        }
+
+        &:hover .movie_info {
+            opacity: 1;
+        }
     }
 }
 </style>
